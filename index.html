@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Swarnendu Jana | Researcher</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050816;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* STAR BACKGROUND */
+
+#stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.3);
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+}
+
+.logo{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:#4cc9f0;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#4cc9f0;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.hero span{
+    color:#4cc9f0;
+}
+
+.hero p{
+    max-width:800px;
+    line-height:1.8;
+    color:#ddd;
+    font-size:1.1rem;
+}
+
+.btn{
+    margin-top:30px;
+    padding:14px 30px;
+    background:#4cc9f0;
+    color:black;
+    border:none;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+/* SECTION */
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#4cc9f0;
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:25px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#4cc9f0;
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+/* ABOUT */
+
+.about{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#ddd;
+}
+
+/* PUBLICATIONS */
+
+.pub{
+    margin-bottom:20px;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    margin:10px 0;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.5rem;
+}
+
+nav ul{
+gap:12px;
+font-size:0.85rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<nav>
+<div class="logo">Swarnendu Jana</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#research">Research</a></li>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#teaching">Teaching</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<h1>Swarnendu <span>Jana</span></h1>
+
+<p>
+Researcher in High-Energy Astrophysics specializing in
+Thermonuclear X-ray Bursts, Neutron Stars,
+X-ray Timing and Spectroscopy,
+XMM-Newton and IXPE Data Analysis.
+</p>
+
+<a href="#research" class="btn">Explore Research</a>
+
+</section>
+
+<section id="about">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+
+I am interested in understanding the physics of compact
+objects, particularly accreting neutron stars and
+thermonuclear X-ray bursts.
+
+My work focuses on timing, spectral, and polarimetric
+studies using data from modern X-ray observatories such as
+XMM-Newton and IXPE.
+
+I am passionate about observational astronomy,
+data analysis, and teaching physics.
+
+</div>
+
+</section>
+
+<section id="research">
+
+<h2 class="section-title">Research Interests</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Thermonuclear X-ray Bursts</h3>
+<p>
+Investigating unstable nuclear burning on neutron star surfaces.
+</p>
+</div>
+
+<div class="card">
+<h3>Neutron Star Physics</h3>
+<p>
+Photospheres, atmospheres, equation of state, and accretion processes.
+</p>
+</div>
+
+<div class="card">
+<h3>XMM-Newton Analysis</h3>
+<p>
+Timing and spectral analysis of compact objects.
+</p>
+</div>
+
+<div class="card">
+<h3>IXPE Polarimetry</h3>
+<p>
+Exploring polarization signatures in high-energy sources.
+</p>
+</div>
+
+<div class="card">
+<h3>Accretion Physics</h3>
+<p>
+Disk dynamics and energy release around compact objects.
+</p>
+</div>
+
+<div class="card">
+<h3>High-Energy Astrophysics</h3>
+<p>
+Observational studies of extreme astrophysical environments.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="publications">
+
+<h2 class="section-title">Publications</h2>
+
+<div class="pub">
+<h3>Research Articles</h3>
+<p>
+Publication list will be updated here.
+</p>
+</div>
+
+<div class="pub">
+<h3>Conference Proceedings</h3>
+<p>
+Conference presentations and proceedings.
+</p>
+</div>
+
+<div class="pub">
+<h3>Technical Reports</h3>
+<p>
+Data analysis tutorials and research notes.
+</p>
+</div>
+
+</section>
+
+<section id="teaching">
+
+<h2 class="section-title">Teaching</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Physics Education</h3>
+<p>
+Teaching undergraduate and senior secondary physics.
+</p>
+</div>
+
+<div class="card">
+<h3>Astronomy</h3>
+<p>
+Compact objects, stellar evolution, and observational astronomy.
+</p>
+</div>
+
+<div class="card">
+<h3>Data Analysis</h3>
+<p>
+Training in XMM-Newton, XSPEC, and Python-based workflows.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="contact">
+
+<p><strong>Name:</strong> Swarnendu Jana</p>
+
+<p><strong>Institution:</strong> University of Delhi</p>
+
+<p><strong>Email:</strong> your-email@university.edu</p>
+
+<p><strong>Google Scholar:</strong> Add Link</p>
+
+<p><strong>ORCID:</strong> Add ORCID</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Swarnendu Jana | High-Energy Astrophysics Research
+
+</footer>
+
+<script>
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars=[];
+
+for(let i=0;i<250;i++){
+
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+v:Math.random()*0.5
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(star=>{
+
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fill();
+
+star.y += star.v;
+
+if(star.y>canvas.height){
+star.y=0;
+star.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+});
+
+</script>
+
+</body>
+</html>
