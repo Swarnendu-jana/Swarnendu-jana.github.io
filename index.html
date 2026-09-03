@@ -3,449 +3,484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Swarnendu Jana | Researcher</title>
-
+<title>Your Name — Astrophysics</title>
+<meta name="description" content="Personal academic website of Your Name, PhD candidate in Astrophysics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg: #080b14;
+    --bg-panel: #10152a;
+    --line: rgba(232,230,221,0.14);
+    --text: #eae7dd;
+    --text-dim: #8891a8;
+    --accent: #e3a34e;
+    --accent-dim: #8a6a3d;
+    --sidebar-w: 280px;
+    --max-w: 640px;
+  }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
-}
+  *{ box-sizing: border-box; margin:0; padding:0; }
 
-html{
-    scroll-behavior:smooth;
-}
+  html{ scroll-behavior: smooth; }
 
-body{
-    background:#050816;
-    color:#fff;
-    overflow-x:hidden;
-}
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation: none !important; transition: none !important; }
+  }
 
-/* STAR BACKGROUND */
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
 
-#stars{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index:-1;
-}
+  h1, h2, h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
 
-/* NAVBAR */
+  a{ color: var(--text); text-decoration: none; }
 
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    backdrop-filter:blur(12px);
-    background:rgba(0,0,0,0.3);
-    padding:15px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:999;
-}
+  /* ---------- starfield ---------- */
+  #stars{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: var(--bg);
+  }
+  #stars span{
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--text);
+    opacity: 0.35;
+  }
+  #stars span.big{ width: 3px; height: 3px; opacity: 0.6; }
+  #stars span.twinkle{ animation: twinkle 4s ease-in-out infinite; }
+  @keyframes twinkle{
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.8; }
+  }
 
-.logo{
-    font-size:1.4rem;
-    font-weight:bold;
-    color:#4cc9f0;
-}
+  /* ---------- layout ---------- */
+  .wrap{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 100vh;
+  }
 
-nav ul{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
+  aside{
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    padding: 4rem 2.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--line);
+  }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    transition:0.3s;
-}
+  .id-block h1{
+    font-size: 1.6rem;
+    margin-bottom: 0.35rem;
+  }
+  .id-block .role{
+    color: var(--accent);
+    font-size: 0.92rem;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .id-block .affil{
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    margin-top: 0.9rem;
+  }
 
-nav a:hover{
-    color:#4cc9f0;
-}
+  nav{ margin-top: 3rem; }
+  nav ul{ list-style: none; }
+  nav li{ margin-bottom: 0.7rem; }
+  nav a{
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    transition: color 0.15s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover, nav a:focus-visible{
+    color: var(--text);
+    border-bottom-color: var(--accent-dim);
+  }
 
-/* HERO */
+  .socials{
+    display: flex;
+    gap: 1.1rem;
+    font-size: 0.85rem;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .socials a{ color: var(--text-dim); }
+  .socials a:hover, .socials a:focus-visible{ color: var(--accent); }
 
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
+  main{
+    flex: 1;
+    padding: 5rem 3rem 6rem;
+    max-width: 900px;
+  }
 
-.hero h1{
-    font-size:4rem;
-    margin-bottom:20px;
-}
+  section{
+    max-width: var(--max-w);
+    margin-bottom: 5.5rem;
+    scroll-margin-top: 3rem;
+  }
+  section:last-of-type{ margin-bottom: 2rem; }
 
-.hero span{
-    color:#4cc9f0;
-}
+  .divider{
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.6rem;
+  }
+  .divider span{
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--accent-dim);
+  }
 
-.hero p{
-    max-width:800px;
-    line-height:1.8;
-    color:#ddd;
-    font-size:1.1rem;
-}
+  h2{
+    font-size: 1.6rem;
+    margin-bottom: 1.3rem;
+  }
 
-.btn{
-    margin-top:30px;
-    padding:14px 30px;
-    background:#4cc9f0;
-    color:black;
-    border:none;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
-}
+  p{ margin-bottom: 1rem; color: var(--text); }
+  p.lede{ font-size: 1.05rem; color: var(--text); }
+  .muted{ color: var(--text-dim); }
 
-/* SECTION */
+  /* hero */
+  .hero{ padding-top: 1rem; }
+  .hero h1{
+    font-size: 2.6rem;
+    max-width: 9.5em;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero p{
+    max-width: 34em;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+  }
 
-section{
-    padding:100px 10%;
-}
+  /* research cards */
+  .research-item{
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .research-item:last-child{ border-bottom: 1px solid var(--line); }
+  .research-item h3{
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .research-item p{ color: var(--text-dim); font-size: 0.96rem; margin-bottom: 0; }
 
-.section-title{
-    font-size:2.5rem;
-    margin-bottom:40px;
-    color:#4cc9f0;
-}
+  /* publications */
+  .pub{
+    display: grid;
+    grid-template-columns: 4.2em 1fr;
+    gap: 1.2rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .pub:last-child{ border-bottom: 1px solid var(--line); }
+  .pub .year{
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    font-size: 0.9rem;
+    padding-top: 0.15rem;
+  }
+  .pub .title{ font-size: 0.98rem; margin-bottom: 0.25rem; color: var(--text); }
+  .pub .venue{ font-size: 0.86rem; color: var(--text-dim); }
+  .pub a.link{
+    font-size: 0.82rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+  }
 
-/* CARDS */
+  /* cv */
+  .cv-download{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.3rem;
+    border: 1px solid var(--line);
+    font-size: 0.92rem;
+    color: var(--text);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .cv-download:hover, .cv-download:focus-visible{
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
+  .timeline{ margin-top: 1.8rem; }
+  .timeline-item{
+    display: grid;
+    grid-template-columns: 6.5em 1fr;
+    gap: 1.2rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .timeline-item:last-child{ border-bottom: 1px solid var(--line); }
+  .timeline-item .when{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .timeline-item .what{ font-size: 0.96rem; }
+  .timeline-item .where{ color: var(--text-dim); font-size: 0.88rem; }
 
-.card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    padding:25px;
-    border-radius:20px;
-    transition:0.3s;
-}
+  /* contact */
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.6rem;
+    margin-top: 1rem;
+  }
+  .contact-row a{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.92rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+  }
+  .contact-row a:hover, .contact-row a:focus-visible{ color: var(--text); }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#4cc9f0;
-}
+  footer{
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    max-width: var(--max-w);
+  }
 
-.card h3{
-    margin-bottom:15px;
-}
+  /* mobile top nav */
+  .mobile-nav{ display: none; }
 
-/* ABOUT */
+  @media (max-width: 860px){
+    .wrap{ flex-direction: column; }
+    aside{
+      width: 100%;
+      height: auto;
+      position: relative;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding: 2rem 1.5rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    aside nav, aside .socials{ display: none; }
+    main{ padding: 3rem 1.5rem 4rem; }
+    .hero h1{ font-size: 2rem; }
+    .mobile-nav{
+      display: flex;
+      gap: 1.1rem;
+      overflow-x: auto;
+      padding: 0 1.5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--line);
+    }
+    .mobile-nav a{
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .pub{ grid-template-columns: 1fr; gap: 0.3rem; }
+    .timeline-item{ grid-template-columns: 1fr; gap: 0.2rem; }
+  }
 
-.about{
-    font-size:1.1rem;
-    line-height:1.8;
-    color:#ddd;
-}
-
-/* PUBLICATIONS */
-
-.pub{
-    margin-bottom:20px;
-    padding:20px;
-    background:rgba(255,255,255,0.05);
-    border-radius:15px;
-}
-
-/* CONTACT */
-
-.contact{
-    text-align:center;
-}
-
-.contact p{
-    margin:10px 0;
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:40px;
-    color:#aaa;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:2.5rem;
-}
-
-nav ul{
-gap:12px;
-font-size:0.85rem;
-}
-
-}
-
+  :focus-visible{ outline: 1px solid var(--accent); outline-offset: 3px; }
 </style>
 </head>
-
 <body>
 
-<canvas id="stars"></canvas>
+<div id="stars"></div>
 
-<nav>
-<div class="logo">Swarnendu Jana</div>
+<div class="wrap">
 
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#research">Research</a></li>
-<li><a href="#publications">Publications</a></li>
-<li><a href="#teaching">Teaching</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
+  <aside>
+    <div>
+      <div class="id-block">
+        <h1>Your Name</h1>
+        <div class="role">PhD Candidate, Astrophysics</div>
+        <div class="affil">Department of Physics &amp; Astronomy<br>Your University</div>
+      </div>
 
-<section class="hero">
+      <nav aria-label="Section navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
 
-<h1>Swarnendu <span>Jana</span></h1>
+    <div class="socials">
+      <a href="mailto:you@university.edu">Email</a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener">Scholar</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://arxiv.org" target="_blank" rel="noopener">arXiv</a>
+    </div>
+  </aside>
 
-<p>
-Researcher in High-Energy Astrophysics specializing in
-Thermonuclear X-ray Bursts, Neutron Stars,
-X-ray Timing and Spectroscopy,
-XMM-Newton and IXPE Data Analysis.
-</p>
+  <div class="mobile-nav">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-<a href="#research" class="btn">Explore Research</a>
+  <main>
 
-</section>
+    <section class="hero" id="about">
+      <div class="divider"><span></span><span></span><span></span></div>
+      <h1>I study how <em>galaxies</em> assemble their mass over cosmic time.</h1>
+      <p>I'm a PhD candidate working on [your subfield — e.g. galaxy formation, gravitational waves, exoplanet atmospheres], combining [observational data from X telescope / simulations / theory] to understand [the specific question you're chasing]. Before this I completed my [MSc/BSc] in [field] at [institution].</p>
+      <p class="muted">Currently based in [City] — always happy to talk about [your favorite research tangent].</p>
+    </section>
 
-<section id="about">
+    <section id="research">
+      <div class="divider"><span></span><span></span><span></span></div>
+      <h2>Research</h2>
 
-<h2 class="section-title">About Me</h2>
+      <div class="research-item">
+        <h3>[Project title one]</h3>
+        <p>One or two sentences on the question you're asking, the method you use, and why it matters. Keep it readable to a non-specialist.</p>
+      </div>
+      <div class="research-item">
+        <h3>[Project title two]</h3>
+        <p>Same format — the puzzle, the approach, the significance. Link to a paper or code repo once it exists.</p>
+      </div>
+      <div class="research-item">
+        <h3>[Project title three]</h3>
+        <p>A side project, collaboration, or earlier thread of work you want visible here.</p>
+      </div>
+    </section>
 
-<div class="about">
+    <section id="publications">
+      <div class="divider"><span></span><span></span><span></span></div>
+      <h2>Publications</h2>
 
-I am interested in understanding the physics of compact
-objects, particularly accreting neutron stars and
-thermonuclear X-ray bursts.
+      <div class="pub">
+        <div class="year">2026</div>
+        <div>
+          <div class="title">Title of your most recent paper goes here</div>
+          <div class="venue">Your Name, Coauthor A, Coauthor B — <em>Journal Name</em></div>
+          <a class="link" href="#">arXiv →</a>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="year">2025</div>
+        <div>
+          <div class="title">Title of an earlier paper or conference proceeding</div>
+          <div class="venue">Your Name, Coauthor A — <em>Journal / Proceedings</em></div>
+          <a class="link" href="#">arXiv →</a>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="year">2024</div>
+        <div>
+          <div class="title">A first-author or contributing-author paper</div>
+          <div class="venue">Coauthor A, Your Name, Coauthor C — <em>Journal Name</em></div>
+          <a class="link" href="#">arXiv →</a>
+        </div>
+      </div>
+    </section>
 
-My work focuses on timing, spectral, and polarimetric
-studies using data from modern X-ray observatories such as
-XMM-Newton and IXPE.
+    <section id="cv">
+      <div class="divider"><span></span><span></span><span></span></div>
+      <h2>CV</h2>
+      <p class="muted">A short summary of your academic path — full CV as PDF below.</p>
 
-I am passionate about observational astronomy,
-data analysis, and teaching physics.
+      <a class="cv-download" href="cv.pdf" download>Download full CV (PDF)</a>
 
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="when">2023 — present</div>
+          <div>
+            <div class="what">PhD, Astrophysics</div>
+            <div class="where">Your University</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="when">2021 — 2023</div>
+          <div>
+            <div class="what">MSc, Physics</div>
+            <div class="where">Previous University</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="when">2018 — 2021</div>
+          <div>
+            <div class="what">BSc, Physics</div>
+            <div class="where">Undergraduate Institution</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="divider"><span></span><span></span><span></span></div>
+      <h2>Get in touch</h2>
+      <p class="muted">Email is the most reliable way to reach me. I'm also glad to share code, data, or slides on request.</p>
+      <div class="contact-row">
+        <a href="mailto:you@university.edu">you@university.edu</a>
+        <a href="https://github.com" target="_blank" rel="noopener">github.com/yourhandle</a>
+        <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; <span id="year"></span> Your Name. Built with plain HTML — free to host on GitHub Pages.
+    </footer>
+
+  </main>
 </div>
-
-</section>
-
-<section id="research">
-
-<h2 class="section-title">Research Interests</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Thermonuclear X-ray Bursts</h3>
-<p>
-Investigating unstable nuclear burning on neutron star surfaces.
-</p>
-</div>
-
-<div class="card">
-<h3>Neutron Star Physics</h3>
-<p>
-Photospheres, atmospheres, equation of state, and accretion processes.
-</p>
-</div>
-
-<div class="card">
-<h3>XMM-Newton Analysis</h3>
-<p>
-Timing and spectral analysis of compact objects.
-</p>
-</div>
-
-<div class="card">
-<h3>IXPE Polarimetry</h3>
-<p>
-Exploring polarization signatures in high-energy sources.
-</p>
-</div>
-
-<div class="card">
-<h3>Accretion Physics</h3>
-<p>
-Disk dynamics and energy release around compact objects.
-</p>
-</div>
-
-<div class="card">
-<h3>High-Energy Astrophysics</h3>
-<p>
-Observational studies of extreme astrophysical environments.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="publications">
-
-<h2 class="section-title">Publications</h2>
-
-<div class="pub">
-<h3>Research Articles</h3>
-<p>
-Publication list will be updated here.
-</p>
-</div>
-
-<div class="pub">
-<h3>Conference Proceedings</h3>
-<p>
-Conference presentations and proceedings.
-</p>
-</div>
-
-<div class="pub">
-<h3>Technical Reports</h3>
-<p>
-Data analysis tutorials and research notes.
-</p>
-</div>
-
-</section>
-
-<section id="teaching">
-
-<h2 class="section-title">Teaching</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Physics Education</h3>
-<p>
-Teaching undergraduate and senior secondary physics.
-</p>
-</div>
-
-<div class="card">
-<h3>Astronomy</h3>
-<p>
-Compact objects, stellar evolution, and observational astronomy.
-</p>
-</div>
-
-<div class="card">
-<h3>Data Analysis</h3>
-<p>
-Training in XMM-Newton, XSPEC, and Python-based workflows.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="contact">
-
-<h2 class="section-title">Contact</h2>
-
-<div class="contact">
-
-<p><strong>Name:</strong> Swarnendu Jana</p>
-
-<p><strong>Institution:</strong> University of Delhi</p>
-
-<p><strong>Email:</strong> your-email@university.edu</p>
-
-<p><strong>Google Scholar:</strong> Add Link</p>
-
-<p><strong>ORCID:</strong> Add ORCID</p>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Swarnendu Jana | High-Energy Astrophysics Research
-
-</footer>
 
 <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars=[];
-
-for(let i=0;i<250;i++){
-
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-v:Math.random()*0.5
-});
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="white";
-
-stars.forEach(star=>{
-
-ctx.beginPath();
-ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
-ctx.fill();
-
-star.y += star.v;
-
-if(star.y>canvas.height){
-star.y=0;
-star.x=Math.random()*canvas.width;
-}
-
-});
-
-requestAnimationFrame(animate);
-
-}
-
-animate();
-
-window.addEventListener("resize",()=>{
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-});
-
+  // Generate a static starfield (no layout thrash, small fixed count)
+  (function(){
+    var field = document.getElementById('stars');
+    var count = 90;
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < count; i++){
+      var s = document.createElement('span');
+      var x = Math.random() * 100;
+      var y = Math.random() * 100;
+      s.style.left = x + 'vw';
+      s.style.top = y + 'vh';
+      if (Math.random() < 0.15) s.classList.add('big');
+      if (Math.random() < 0.2){
+        s.classList.add('twinkle');
+        s.style.animationDelay = (Math.random() * 4) + 's';
+      }
+      frag.appendChild(s);
+    }
+    field.appendChild(frag);
+  })();
 </script>
 
 </body>
