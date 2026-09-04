@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Swarnendu Jana | Researcher</title>
+
+<script>
+  // Apply saved theme before CSS renders, so there's no flash of the wrong theme
+  (function(){
+    var saved = localStorage.getItem('theme');
+    var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    var theme = saved || (prefersLight ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ---------- THEME VARIABLES ---------- */
+:root{
+    --bg:#050816;
+    --text:#fff;
+    --text-dim:#ddd;
+    --text-faint:#aaa;
+    --accent:#4cc9f0;
+    --accent-text:#000;
+    --nav-bg:rgba(0,0,0,0.35);
+    --card-bg:rgba(255,255,255,0.06);
+    --card-border:rgba(255,255,255,0.12);
+    --overlay:rgba(5,8,22,0.35);
+}
+
+html[data-theme="light"]{
+    --bg:#f4f6fb;
+    --text:#12141c;
+    --text-dim:#3a3d4a;
+    --text-faint:#6b6f80;
+    --accent:#0f7fa8;
+    --accent-text:#fff;
+    --nav-bg:rgba(255,255,255,0.8);
+    --card-bg:rgba(15,20,35,0.05);
+    --card-border:rgba(15,20,35,0.14);
+    --overlay:rgba(244,246,251,0.55);
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    transition:background 0.25s ease, color 0.25s ease;
+}
+
+/* STAR BACKGROUND */
+
+#stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-2;
+    opacity:0.5;
+}
+
+/* NASA BACKGROUND IMAGE */
+
+#nasa-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background-image:url('assets/BHW_Disk_and_Corona.gif');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:0.9;
+}
+
+#nasa-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--overlay);
+}
+
+/* THEME TOGGLE BUTTON */
+
+.theme-toggle{
+    position:fixed;
+    top:18px;
+    right:18px;
+    z-index:1000;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--card-border);
+    background:var(--nav-bg);
+    backdrop-filter:blur(10px);
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+.theme-toggle:hover{ border-color:var(--accent); }
+.theme-toggle:active{ transform:scale(0.93); }
+.theme-toggle svg{ width:19px; height:19px; }
+.theme-toggle .sun{ display:none; }
+html[data-theme="light"] .theme-toggle .moon{ display:none; }
+html[data-theme="light"] .theme-toggle .sun{ display:block; }
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    backdrop-filter:blur(12px);
+    background:var(--nav-bg);
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+}
+
+.logo{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:var(--accent);
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:var(--text);
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--accent);
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+    text-shadow:0 2px 20px rgba(0,0,0,0.6);
+}
+
+.hero span{
+    color:var(--accent);
+}
+
+.hero p{
+    max-width:800px;
+    line-height:1.8;
+    color:var(--text-dim);
+    font-size:1.1rem;
+    text-shadow:0 1px 12px rgba(0,0,0,0.55);
+}
+
+.btn{
+    margin-top:30px;
+    padding:14px 30px;
+    background:var(--accent);
+    color:var(--accent-text);
+    border:none;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+}
+
+/* SECTION */
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:var(--accent);
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    padding:25px;
+    border-radius:20px;
+    transition:0.3s;
+    backdrop-filter:blur(6px);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:var(--accent);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+/* ABOUT */
+
+.about{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:var(--text-dim);
+}
+
+/* PUBLICATIONS */
+
+.pub{
+    margin-bottom:20px;
+    padding:20px;
+    background:var(--card-bg);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    margin:10px 0;
+}
+
+/* VISITOR COUNTER */
+
+.visitor-block{
+    margin-top:35px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.visitor-block p{
+    color:var(--text-faint);
+    font-size:0.85rem;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--text-faint);
+}
+
+.bg-credit{
+    font-size:0.72rem;
+    color:var(--text-faint);
+    max-width:700px;
+    margin:14px auto 0;
+    line-height:1.6;
+    opacity:0.75;
+}
+
+.bg-credit a{
+    color:var(--accent);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.5rem;
+}
+
+nav ul{
+gap:12px;
+font-size:0.85rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="nasa-bg"></div>
+<canvas id="stars"></canvas>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" type="button">
+  <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+  <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4.5"></circle>
+    <path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8L6 18M18 6l1.8-1.8"></path>
+  </svg>
+</button>
+
+<nav>
+<div class="logo">Swarnendu Jana</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#research">Research</a></li>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#teaching">Teaching</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<h1>Swarnendu <span>Jana</span></h1>
+
+<p>
+Researcher in High-Energy Astrophysics specializing in
+Thermonuclear X-ray Bursts, Neutron Stars,
+X-ray Timing and Spectroscopy,
+XMM-Newton and IXPE Data Analysis.
+</p>
+
+<a href="#research" class="btn">Explore Research</a>
+
+</section>
+
+<section id="about">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+
+I am interested in understanding the physics of compact
+objects, particularly accreting neutron stars and
+thermonuclear X-ray bursts.
+
+My work focuses on timing, spectral, and polarimetric
+studies using data from modern X-ray observatories such as
+XMM-Newton and IXPE.
+
+I am passionate about observational astronomy,
+data analysis, and teaching physics.
+
+</div>
+
+</section>
+
+<section id="research">
+
+<h2 class="section-title">Research Interests</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Thermonuclear X-ray Bursts</h3>
+<p>
+Investigating unstable nuclear burning on neutron star surfaces.
+</p>
+</div>
+
+<div class="card">
+<h3>Neutron Star Physics</h3>
+<p>
+Photospheres, atmospheres, equation of state, and accretion processes.
+</p>
+</div>
+
+<div class="card">
+<h3>XMM-Newton Analysis</h3>
+<p>
+Timing and spectral analysis of compact objects.
+</p>
+</div>
+
+<div class="card">
+<h3>IXPE Polarimetry</h3>
+<p>
+Exploring polarization signatures in high-energy sources.
+</p>
+</div>
+
+<div class="card">
+<h3>Accretion Physics</h3>
+<p>
+Disk dynamics and energy release around compact objects.
+</p>
+</div>
+
+<div class="card">
+<h3>High-Energy Astrophysics</h3>
+<p>
+Observational studies of extreme astrophysical environments.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="publications">
+
+<h2 class="section-title">Publications</h2>
+
+<div class="pub">
+<h3>Research Articles</h3>
+<p>
+Publication list will be updated here.
+</p>
+</div>
+
+<div class="pub">
+<h3>Conference Proceedings</h3>
+<p>
+Conference presentations and proceedings.
+</p>
+</div>
+
+<div class="pub">
+<h3>Technical Reports</h3>
+<p>
+Data analysis tutorials and research notes.
+</p>
+</div>
+
+</section>
+
+<section id="teaching">
+
+<h2 class="section-title">Teaching</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Physics Education</h3>
+<p>
+Teaching undergraduate and senior secondary physics.
+</p>
+</div>
+
+<div class="card">
+<h3>Astronomy</h3>
+<p>
+Compact objects, stellar evolution, and observational astronomy.
+</p>
+</div>
+
+<div class="card">
+<h3>Data Analysis</h3>
+<p>
+Training in XMM-Newton, XSPEC, and Python-based workflows.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="contact">
+
+<p><strong>Name:</strong> Swarnendu Jana</p>
+
+<p><strong>Institution:</strong> visva bharati</p>
+
+<p><strong>Email:</strong> your-email@university.edu</p>
+
+<p><strong>Google Scholar:</strong> https://scholar.google.com/citations?user=l0LY3X0AAAAJ&hl=en</p>
+
+<p><strong>ORCID:</strong> Add ORCID</p>
+
+<!--
+  VISITOR COUNTER (by country):
+  1. Go to https://flagcounter.com/free/ (no signup needed)
+  2. Pick your flag size/style, click "Get your Flag Counter"
+  3. It gives you an HTML snippet like:
+     <a href="https://info.flagcounter.com/xxxx"><img src="https://s11.flagcounter.com/count2/xxxx/..." /></a>
+  4. Replace the placeholder block below with that exact snippet
+-->
+<div class="visitor-block">
+  <p>Visitors by country</p>
+  <!-- PASTE YOUR FLAGCOUNTER SNIPPET HERE, replacing this comment -->
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Swarnendu Jana | High-Energy Astrophysics Research
+
+<p class="bg-credit">
+Background: "Disk and Corona" — Illustration of a black hole pulling material from a neighboring star into its accretion disk, with the corona shown above the disk. By NASA's Scientific Visualization Studio - University of Maryland College Park/Barb Mattson, University of Maryland College Park/Sara Mitchell, Business Integra/Kelly Ramos, KBR Wyle Services, LLC/Scott Wiessinger - <a rel="nofollow" class="external text" href="https://svs.gsfc.nasa.gov/14132" target="_blank">Black Hole Week: Black Hole GIFs</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=151971540" target="_blank">Link</a>
+</p>
+
+</footer>
+
+<script>
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars=[];
+
+for(let i=0;i<250;i++){
+
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+v:Math.random()*0.5
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(star=>{
+
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fill();
+
+star.y += star.v;
+
+if(star.y>canvas.height){
+star.y=0;
+star.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+});
+
+// THEME TOGGLE
+document.getElementById('themeToggle').addEventListener('click', function(){
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+});
+
+</script>
+
+</body>
+</html>
