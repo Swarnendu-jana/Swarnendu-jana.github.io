@@ -282,6 +282,11 @@ section{
     font-size:0.85rem;
 }
 
+.visitor-block img{
+    max-width:100%;
+    height:auto;
+}
+
 /* FOOTER */
 
 footer{
@@ -512,15 +517,26 @@ Training in XMM-Newton, XSPEC, and Python-based workflows.
 
 <!--
   VISITOR COUNTER (by country):
-  1. Go to https://flagcounter.com/free/ (no signup needed)
+  1. Go to https://flagcounter.com/free (no signup needed)
   2. Pick your flag size/style, click "Get your Flag Counter"
   3. It gives you an HTML snippet like:
      <a href="https://info.flagcounter.com/xxxx"><img src="https://s11.flagcounter.com/count2/xxxx/..." /></a>
-  4. Replace the placeholder block below with that exact snippet
+  4. Replace the <!-- FLAG COUNTER SNIPPET GOES HERE --> comment below with that exact snippet
 -->
 <div class="visitor-block">
+
+  <p>Total visitors</p>
+  <!--
+    Simple total-visitor badge, no signup required.
+    "swarnendujana-portfolio" is just a unique tracking key -- change it to
+    anything you like (e.g. your GitHub username + repo name) so it doesn't
+    collide with anyone else's counter.
+  -->
+  <img src="https://api.visitorbadge.io/api/visitors?path=swarnendujana-portfolio&label=Visitors&countColor=%234cc9f0&style=flat" alt="Visitor count" />
+
   <p>Visitors by country</p>
-  <!-- PASTE YOUR FLAGCOUNTER SNIPPET HERE, replacing this comment -->
+  <!-- FLAG COUNTER SNIPPET GOES HERE (see instructions above) -->
+
 </div>
 
 </div>
@@ -603,32 +619,4 @@ document.getElementById('themeToggle').addEventListener('click', function(){
 </script>
 
 </body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Neutron Star X-ray Binaries</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<section class="hero">
-
-    <video class="hero-video" autoplay loop muted playsinline>
-        <source src="image/millisecond_pulsar.mp4" type="video/mp4">
-    </video>
-
-    <div class="hero-content">
-        <h1>Neutron Star X-ray Binaries</h1>
-        <p>Exploring accretion, pulsations and high-energy astrophysics</p>
-    </div>
-
-</section>
-
-</body>
-</html>
 </html>
